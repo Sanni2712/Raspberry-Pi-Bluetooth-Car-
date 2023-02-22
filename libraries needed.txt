@@ -1,0 +1,9 @@
+Libraries to install ---
+
+sudo apt-get install bluetooth blueman bluez
+
+sudo apt-get install python-bluetooth
+
+sudo apt-get install python-rpi.gpio
+
+pip3 install pybluez
