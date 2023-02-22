@@ -9,10 +9,10 @@ import RPi.GPIO as GPIO                # ------> Import GPIO module so that we c
 GPIO.setwarnings(False)                #-------> To disable warnings
 GPIO.setmode(GPIO.BOARD)               #-------> GPIO pins scheme (here its set to physical board)
 
-GPIO.setup(8, GPIO.OUT, initial=GPIO.LOW)              # ------v
+GPIO.setup(8, GPIO.OUT, initial=GPIO.LOW)              # ------↓
 GPIO.setup(10, GPIO.OUT, initial=GPIO.LOW)             # ---->Declaring motor1 pins(8,10) as output and low at first
 
-GPIO.setup(3, GPIO.OUT, initial=GPIO.LOW)              # -------v
+GPIO.setup(3, GPIO.OUT, initial=GPIO.LOW)              # -------↓
 GPIO.setup(5, GPIO.OUT, initial=GPIO.LOW)              # ----->Declaring motor1 pins(8,5) as output and low at first
 
 
@@ -68,39 +68,38 @@ while True:                                  #------> run the below functions in
     
     data= client_socket.recv(1024)           #-----> declaring variable "data" as the data received from the client 
     data = data.decode('UTF-8')              #-----> the data recieved will be in the form of byes 
-                                                             #         so we will convert it into strings
-    print ("Received: ", data)
+    print ("Received: ", data)               #       so we will convert it into strings
 
     if (data == "F"):                        #----> if the data is f
-        forward()                            # then function forward
+        forward()                            #      then function forward
         
     elif (data == "L"):                      #----> if the data is L
-        left()                               # then function left
+        left()                               #      then function left
         
     elif (data == "R"):                      #----> if the data is R
-        right()                              # then function right
+        right()                              #      then function right
         
     elif (data == "B"):                      #----> if the data is B
-        back()                               # then function back
+        back()                               #      then function back
         
     elif (data == "s"):                      #----> if the data is s
-        stop()                               # then function stop
+        stop()                               #      then function stop
         
     elif(data == "X"):                       #----> if the data is X
-        GPIO.output(13, GPIO.HIGH)           # then set buzzer pin 13 value high 
+        GPIO.output(13, GPIO.HIGH)           #      then set buzzer pin 13 value high 
     elif(data == "x"):                       #----> if the data is x
-        GPIO.output(13, GPIO.LOW)            # then set buzzer pin 13 value low 
+        GPIO.output(13, GPIO.LOW)            #      then set buzzer pin 13 value low 
         
     elif (data == "l"):                      #----> if the data is L
-         a+=1                                # then increase value of variable a by 1
-    if(a == 2):                              #-----> if variable a value is 2 then set it back to zero
-        a = 0                                # then set  variable a to 0
-    if(a == 1):                              #------->if a value is 1 
-        GPIO.output(15, GPIO.HIGH)           # then set led pin 15 value to High to turn on the light
-    if(a == 0):                              #------->if a value is 0
-        GPIO.output(15, GPIO.LOW)            # then set led pin 15 value to LOW to turn off the light
+         a+=1                                #      then increase value of variable a by 1
+    if(a == 2):                              #----> if variable a value is 2 then set it back to zero
+        a = 0                                #      then set  variable a to 0
+    if(a == 1):                              #----->if 'a' value is 1 
+        GPIO.output(15, GPIO.HIGH)           #      then set led pin 15 value to High to turn on the light
+    if(a == 0):                              #----->if 'a' value is 0
+        GPIO.output(15, GPIO.LOW)            #      then set led pin 15 value to LOW to turn off the light
 
 
-#----------------------------------------------------The End of code =)---------------------------------------------------------------------------------------
+#----------------------------------------------------End of The code =)---------------------------------------------------------------------------------------
 
 
